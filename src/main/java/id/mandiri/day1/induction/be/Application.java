@@ -1,9 +1,9 @@
 package id.mandiri.day1.induction.be;
 
-import id.mandiri.day1.induction.be.service.ApplicationConfig;
+import id.mandiri.day1.induction.be.config.ApplicationConfig;
 import id.mandiri.day1.induction.be.service.GreetingService;
 import id.mandiri.day1.induction.be.service.OutputService;
-import id.mandiri.day1.induction.be.service.TimeService;
+import id.mandiri.day1.induction.be.service.TotalAnimalService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -15,13 +15,16 @@ public class Application {
 //        OutputService outputService = new OutputService(greetingService, timeService);
 
         ApplicationContext context = new AnnotationConfigApplicationContext(ApplicationConfig.class);
-        OutputService outputService = context.getBean(OutputService.class);
-        GreetingService greetingService = context.getBean(GreetingService.class);
+//        OutputService outputService = context.getBean(OutputService.class);
+//        GreetingService greetingService = context.getBean(GreetingService.class);
 
-        for (int i=0;i<5;i++){
-            outputService.generateOutput("Frank");
-            System.out.println(greetingService.getGreeting("bangsat"));
-            Thread.sleep(5000);
-        }
+        TotalAnimalService totalAnimalService = context.getBean(TotalAnimalService.class);
+        totalAnimalService.getTotalAnimal();
+
+//        for (int i=0;i<5;i++){
+//            outputService.generateOutput("Frank");
+//            System.out.println(greetingService.getGreeting("bangsat"));
+//            Thread.sleep(5000);
+//        }
     }
 }
